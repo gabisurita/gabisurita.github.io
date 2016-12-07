@@ -32,12 +32,12 @@ DEFAULT_PAGINATION = 5
 THEME = 'theme'
 
 # Uncomment following line if you want document-relative URLs when developing
-# RELATIVE_URLS = True
+RELATIVE_URLS = True
 
 # Theme conf
 LICENSE_NAME = 'CC-BY-SA 4.0'
 LICENSE_URL = 'https://creativecommons.org/licenses/by-sa/4.0/'
-PROFILE_IMAGE = 'theme/img/prof150.jpg'
+PROFILE_IMAGE = '/theme/img/prof3-150x150.jpg'
 SHOW_ARTICLE_AUTHOR = True
 PAGES_ON_MENU = True
 

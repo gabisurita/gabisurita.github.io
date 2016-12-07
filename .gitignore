@@ -92,5 +92,5 @@ ENV/
 output
 
 # Vim
-.swo
-.swp
+*.swo
+*.swp
