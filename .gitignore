@@ -90,3 +90,7 @@ ENV/
 
 # Pelican
 output
+
+# Vim
+.swo
+.swp
