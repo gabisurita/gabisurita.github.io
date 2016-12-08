@@ -18,6 +18,7 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 FEED_ALL_RSS = 'feeds/all.rss.xml'
+OUTREACHY_FEED_RSS = 'feeds/outreachy.rss.xml'
 AUTHOR_FEED_RSS = None
 
 # Blogroll
@@ -37,7 +38,7 @@ RELATIVE_URLS = True
 # Theme conf
 LICENSE_NAME = 'CC-BY-SA 4.0'
 LICENSE_URL = 'https://creativecommons.org/licenses/by-sa/4.0/'
-PROFILE_IMAGE = '/theme/img/prof3-150x150.jpg'
+PROFILE_IMAGE = '/theme/img/prof-150x150.jpg'
 SHOW_ARTICLE_AUTHOR = True
 PAGES_ON_MENU = True
 
