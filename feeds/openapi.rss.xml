@@ -218,20 +218,4 @@ This increases a bit the amount of code needed, but allow us more modularity.&lt
 &lt;p&gt;So, I hope that you found this helpful! Fell free to contact me for upgrades
 on this tutorial by email or opening an issue on it's repository. See you! :)&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Gabriela Surita</dc:creator><pubDate>Fri, 09 Dec 2016 01:22:00 -0200</pubDate><guid isPermaLink="false">tag:,2016-12-09:gabisurita.github.io/openapi-logic-validation.html</guid><category>Swagger</category><category>OpenAPI</category><category>Bravado</category><category>Testing</category><category>Python</category></item><item><title>Just starting</title><link>gabisurita.github.io/first.html</link><description>&lt;p&gt;I've always wanted to have a blog, but always used an excuse for not creating and updating it.
-I've used to think that nobody was going to read it or what I did wasn't important enough.
-Recently I've started to get involved with open software and specially Mozilla at project
-called Outreachy (and was eventually accepted for it) and it's the first time that I feel
-like I'm doing something really interesting and creative.
-I hope I'll be able to log my experience here (and not give up this time).&lt;/p&gt;
-&lt;p&gt;For those who don't know, &lt;a class="reference external" href="https://wiki.gnome.org/Outreachy"&gt;Outreachy&lt;/a&gt; is a program that
-organizes internships in free and open software companies for groups that are usually
-underrepresented in these projects and computer science in general. Among the several companies
-that are participating on this round, I've chose Mozilla to contribute to.
-The project I'm most working is called &lt;a class="reference external" href="https://www.kinto-storage.org/"&gt;Kinto&lt;/a&gt;,
-which is a self-hostable storage service over HTTP, with some cool features, like synchronisation
-and sharing abilities. My main attribution during my 3 month internship is to &lt;a class="reference external" href="https://wiki.mozilla.org/Outreachy#Add_support_for_OpenAPI_to_Kinto"&gt;add support
-for OpenAPI to Kinto&lt;/a&gt;.
-I'll go through technical details on the future.&lt;/p&gt;
-&lt;p&gt;So, thank you for your attention and I hope you'll enjoy the content. :)&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Gabriela Surita</dc:creator><pubDate>Wed, 07 Dec 2016 11:57:00 -0200</pubDate><guid isPermaLink="false">tag:,2016-12-07:gabisurita.github.io/first.html</guid><category>outreachy</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Gabriela Surita</dc:creator><pubDate>Fri, 09 Dec 2016 01:22:00 -0200</pubDate><guid isPermaLink="false">tag:,2016-12-09:gabisurita.github.io/openapi-logic-validation.html</guid><category>Swagger</category><category>OpenAPI</category><category>Bravado</category><category>Testing</category><category>Python</category></item></channel></rss>
