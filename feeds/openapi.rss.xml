@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0"><channel><title>Gabi Surita</title><link>gabisurita.github.io/</link><description></description><lastBuildDate>Fri, 09 Dec 2016 01:22:00 -0200</lastBuildDate><item><title>Testing an OpenAPI Spec with Bravado</title><link>gabisurita.github.io/openapi-logic-validation.html</link><description>&lt;p&gt;&lt;a class="reference external" href="https://github.com/OAI/OpenAPI-Specification"&gt;OpenAPI&lt;/a&gt; (formally known as Swagger)
-is a standard describe REST APIs on a computer and human readable way.
+is a standard to describe REST APIs on a computer and human readable way.
 It can be used with several utilities, like automated server and client code generation,
-generating interactive documentation and mock testing.&lt;/p&gt;
+generating interactive documentation, prototyping and mock testing.&lt;/p&gt;
 &lt;p&gt;The Swagger way of describing an API usually assumes you are creating the Spec &lt;strong&gt;before&lt;/strong&gt;
 coding the API. What is expected using this workflow is that everything after the spec
 should follow and comply with it. There are several ways to ensure that the server
