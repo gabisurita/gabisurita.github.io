@@ -16,7 +16,7 @@ generating interactive documentation, prototyping and mock testing.
 The Swagger way of describing an API usually assumes you are creating the Spec **before**
 coding the API. What is expected using this workflow is that everything after the spec
 should follow and comply with it. There are several ways to ensure that the server
-and the clients are matching a spec, but lets imagine another use case where you already
+and the clients are matching a spec, but let's imagine another use case where you already
 have a complex API running, a static documentation and you want to generate an OpenAPI
 description of the application.
 In this case, the running app should be the source of truth and the compliance
@@ -27,7 +27,7 @@ For this simple tutorial I'll be using
 as a server and
 `Bravado <https://github.com/Yelp/bravado>`_
 for the spec testing, which is a cool app
-maintained by Yelp which allows generate clients for Swagger powered server on runtime.
+maintained by Yelp which allows you to generate clients for Swagger powered servers on runtime.
 It doesn't have a fairly comprehensive documentation though.
 
 Before we start I suggest that if you want to follow this tutorial in detail,
@@ -41,7 +41,7 @@ start a *virtualenv* and install the Python requirements.
     source venv/bin/activate
     pip install -r requirements.txt
 
-So lets start! Imagine we have Pyramid App on `app.py` as follows:
+So let's start! Imagine we have Pyramid App on `app.py` as follows:
 
 
 Pyramid Server Example
@@ -73,7 +73,7 @@ Pyramid Server Example
         server.serve_forever()
 
 
-You can try the server running it with Python and making browser httpie or CURL requests.
+You can try the server running it with Python and making browser `httpie` or CURL requests.
 
 .. code-block:: bash
 
@@ -170,7 +170,7 @@ You may run it with:
     pytest test_bravado.py
 
 This is cool, but has some limitations, like what if we don't want to run an
-instance of the server in parallel and use something like WebTest to encapsulate
+instance of the server in parallel and use something like `WebTest` to encapsulate
 our web app?
 
 Testing using Bravado Core and WebTest
@@ -260,5 +260,5 @@ And now you can test it only with:
 
     pytest test_bravado_core.py
 
-So, I hope that you found this helpful! Fell free to contact me for upgrades
-on this tutorial by email or opening an issue on it's repository. See you! :)
+So, I hope that you found this helpful! Feel free to contact me for upgrades
+on this tutorial by email or opening an issue on its repository. See you! :)
