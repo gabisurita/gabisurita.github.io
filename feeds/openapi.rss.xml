@@ -6,7 +6,7 @@ generating interactive documentation, prototyping and mock testing.&lt;/p&gt;
 &lt;p&gt;The Swagger way of describing an API usually assumes you are creating the Spec &lt;strong&gt;before&lt;/strong&gt;
 coding the API. What is expected using this workflow is that everything after the spec
 should follow and comply with it. There are several ways to ensure that the server
-and the clients are matching a spec, but lets imagine another use case where you already
+and the clients are matching a spec, but let's imagine another use case where you already
 have a complex API running, a static documentation and you want to generate an OpenAPI
 description of the application.
 In this case, the running app should be the source of truth and the compliance
@@ -16,7 +16,7 @@ of the spec should be tested.&lt;/p&gt;
 as a server and
 &lt;a class="reference external" href="https://github.com/Yelp/bravado"&gt;Bravado&lt;/a&gt;
 for the spec testing, which is a cool app
-maintained by Yelp which allows generate clients for Swagger powered server on runtime.
+maintained by Yelp which allows you to generate clients for Swagger powered servers on runtime.
 It doesn't have a fairly comprehensive documentation though.&lt;/p&gt;
 &lt;p&gt;Before we start I suggest that if you want to follow this tutorial in detail,
 you should clone it on &lt;a class="reference external" href="https://github.com/gabisurita/swagger-testing-tutorial"&gt;Github&lt;/a&gt;,
@@ -26,7 +26,7 @@ virtualenv venv
 &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate
 pip install -r requirements.txt
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;So lets start! Imagine we have Pyramid App on &lt;cite&gt;app.py&lt;/cite&gt; as follows:&lt;/p&gt;
+&lt;p&gt;So let's start! Imagine we have Pyramid App on &lt;cite&gt;app.py&lt;/cite&gt; as follows:&lt;/p&gt;
 &lt;div class="section" id="pyramid-server-example"&gt;
 &lt;h2&gt;Pyramid Server Example&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;wsgiref.simple_server&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;make_server&lt;/span&gt;
@@ -52,7 +52,7 @@ pip install -r requirements.txt
     &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;make_server&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;0.0.0.0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8080&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;server&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;serve_forever&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;You can try the server running it with Python and making browser httpie or CURL requests.&lt;/p&gt;
+&lt;p&gt;You can try the server running it with Python and making browser &lt;cite&gt;httpie&lt;/cite&gt; or CURL requests.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python app.py &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;
 curl localhost:8080/hello/gabi
 &lt;/pre&gt;&lt;/div&gt;
@@ -133,7 +133,7 @@ the tests. Consider the following &lt;cite&gt;test_bravado.py&lt;/cite&gt; file.
 pytest test_bravado.py
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This is cool, but has some limitations, like what if we don't want to run an
-instance of the server in parallel and use something like WebTest to encapsulate
+instance of the server in parallel and use something like &lt;cite&gt;WebTest&lt;/cite&gt; to encapsulate
 our web app?&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="testing-using-bravado-core-and-webtest"&gt;
@@ -215,7 +215,7 @@ This increases a bit the amount of code needed, but allow us more modularity.&lt
 &lt;p&gt;And now you can test it only with:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pytest test_bravado_core.py
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;So, I hope that you found this helpful! Fell free to contact me for upgrades
-on this tutorial by email or opening an issue on it's repository. See you! :)&lt;/p&gt;
+&lt;p&gt;So, I hope that you found this helpful! Feel free to contact me for upgrades
+on this tutorial by email or opening an issue on its repository. See you! :)&lt;/p&gt;
 &lt;/div&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Gabriela Surita</dc:creator><pubDate>Fri, 09 Dec 2016 01:22:00 -0200</pubDate><guid isPermaLink="false">tag:,2016-12-09:gabisurita.github.io/openapi-logic-validation.html</guid><category>Swagger</category><category>OpenAPI</category><category>Bravado</category><category>Testing</category><category>Python</category></item></channel></rss>

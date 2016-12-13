@@ -78,7 +78,7 @@ generating interactive documentation, prototyping and mock testing.</p>
 <p>The Swagger way of describing an API usually assumes you are creating the Spec <strong>before</strong>
 coding the API. What is expected using this workflow is that everything after the spec
 should follow and comply with it. There are several ways to ensure that the server
-and the clients are matching a spec, but lets imagine another use case where you already
+and the clients are matching a spec, but let's imagine another use case where you already
 have a complex API running, a static documentation and you want to generate an OpenAPI
 description of the application.
 In this case, the running app should be the source of truth and the compliance
@@ -88,7 +88,7 @@ of the spec should be tested.</p>
 as a server and
 <a class="reference external" href="https://github.com/Yelp/bravado">Bravado</a>
 for the spec testing, which is a cool app
-maintained by Yelp which allows generate clients for Swagger powered server on runtime.
+maintained by Yelp which allows you to generate clients for Swagger powered servers on runtime.
 It doesn't have a fairly comprehensive documentation though.</p>
 <p>Before we start I suggest that if you want to follow this tutorial in detail,
 you should clone it on <a class="reference external" href="https://github.com/gabisurita/swagger-testing-tutorial">Github</a>,
@@ -98,7 +98,7 @@ virtualenv venv
 <span class="nb">source</span> venv/bin/activate
 pip install -r requirements.txt
 </pre></div>
-<p>So lets start! Imagine we have Pyramid App on <cite>app.py</cite> as follows:</p>
+<p>So let's start! Imagine we have Pyramid App on <cite>app.py</cite> as follows:</p>
 <div class="section" id="pyramid-server-example">
 <h2>Pyramid Server Example</h2>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wsgiref.simple_server</span> <span class="kn">import</span> <span class="n">make_server</span>
@@ -124,7 +124,7 @@ pip install -r requirements.txt
     <span class="n">server</span> <span class="o">=</span> <span class="n">make_server</span><span class="p">(</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">,</span> <span class="n">app</span><span class="p">)</span>
     <span class="n">server</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
 </pre></div>
-<p>You can try the server running it with Python and making browser httpie or CURL requests.</p>
+<p>You can try the server running it with Python and making browser <cite>httpie</cite> or CURL requests.</p>
 <div class="highlight"><pre><span></span>python app.py <span class="p">&amp;</span>
 curl localhost:8080/hello/gabi
 </pre></div>
@@ -205,7 +205,7 @@ the tests. Consider the following <cite>test_bravado.py</cite> file.</p>
 pytest test_bravado.py
 </pre></div>
 <p>This is cool, but has some limitations, like what if we don't want to run an
-instance of the server in parallel and use something like WebTest to encapsulate
+instance of the server in parallel and use something like <cite>WebTest</cite> to encapsulate
 our web app?</p>
 </div>
 <div class="section" id="testing-using-bravado-core-and-webtest">
@@ -287,8 +287,8 @@ This increases a bit the amount of code needed, but allow us more modularity.</p
 <p>And now you can test it only with:</p>
 <div class="highlight"><pre><span></span>pytest test_bravado_core.py
 </pre></div>
-<p>So, I hope that you found this helpful! Fell free to contact me for upgrades
-on this tutorial by email or opening an issue on it's repository. See you! :)</p>
+<p>So, I hope that you found this helpful! Feel free to contact me for upgrades
+on this tutorial by email or opening an issue on its repository. See you! :)</p>
 </div>
 
     </div>
