@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Gabi Surita</title><link href="gabisurita.github.io/" rel="alternate"></link><link href="gabisurita.github.io/feeds/outreachy.atom.xml" rel="self"></link><id>gabisurita.github.io/</id><updated>2016-12-07T11:57:00-02:00</updated><entry><title>Just starting</title><link href="gabisurita.github.io/first.html" rel="alternate"></link><published>2016-12-07T11:57:00-02:00</published><updated>2016-12-07T11:57:00-02:00</updated><author><name>Gabriela Surita</name></author><id>tag:,2016-12-07:gabisurita.github.io/first.html</id><summary type="html">&lt;p&gt;I've always wanted to have a blog, but always used an excuse for not creating and updating it.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Gabi Surita - Outreachy</title><link href="gabisurita.github.io/" rel="alternate"></link><link href="gabisurita.github.io/feeds/outreachy.atom.xml" rel="self"></link><id>gabisurita.github.io/</id><updated>2016-12-07T11:57:00-02:00</updated><entry><title>Just starting</title><link href="gabisurita.github.io/first.html" rel="alternate"></link><published>2016-12-07T11:57:00-02:00</published><updated>2016-12-07T11:57:00-02:00</updated><author><name>Gabriela Surita</name></author><id>tag:None,2016-12-07:gabisurita.github.io/first.html</id><summary type="html">&lt;p&gt;I've always wanted to have a blog, but always used an excuse for not creating and updating it.
+I've used to think that nobody was going to read it or what I did wasn't important enough.
+Recently I've started to get involved with open software and specially Mozilla at project …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've always wanted to have a blog, but always used an excuse for not creating and updating it.
 I've used to think that nobody was going to read it or what I did wasn't important enough.
 Recently I've started to get involved with open software and specially Mozilla at project
 called Outreachy (and was eventually accepted for it) and it's the first time that I feel
@@ -15,4 +17,4 @@ and sharing abilities. My main attribution during my 3 month internship is to &l
 for OpenAPI to Kinto&lt;/a&gt;.
 I'll go through technical details on the future.&lt;/p&gt;
 &lt;p&gt;So, thank you for your attention and I hope you'll enjoy the content. :)&lt;/p&gt;
-</summary><category term="outreachy"></category></entry></feed>
+</content><category term="outreachy"></category></entry></feed>

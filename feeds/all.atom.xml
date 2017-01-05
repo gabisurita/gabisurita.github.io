@@ -1,5 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Gabi Surita</title><link href="gabisurita.github.io/" rel="alternate"></link><link href="gabisurita.github.io/feeds/all.atom.xml" rel="self"></link><id>gabisurita.github.io/</id><updated>2016-12-09T01:22:00-02:00</updated><entry><title>Testing an OpenAPI Spec with Bravado</title><link href="gabisurita.github.io/openapi-logic-validation.html" rel="alternate"></link><published>2016-12-09T01:22:00-02:00</published><updated>2016-12-09T01:22:00-02:00</updated><author><name>Gabriela Surita</name></author><id>tag:,2016-12-09:gabisurita.github.io/openapi-logic-validation.html</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/OAI/OpenAPI-Specification"&gt;OpenAPI&lt;/a&gt; (formally known as Swagger)
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Gabi Surita</title><link href="gabisurita.github.io/" rel="alternate"></link><link href="gabisurita.github.io/feeds/all.atom.xml" rel="self"></link><id>gabisurita.github.io/</id><updated>2016-12-19T09:22:00-02:00</updated><entry><title>Creating clients for Kinto using Swagger Codegen</title><link href="gabisurita.github.io/kinto-client-generation.html" rel="alternate"></link><published>2016-12-19T09:22:00-02:00</published><updated>2016-12-19T09:22:00-02:00</updated><author><name>Gabriela Surita</name></author><id>tag:None,2016-12-19:gabisurita.github.io/kinto-client-generation.html</id><summary type="html">&lt;p&gt;While working with
+&lt;a class="reference external" href="https://github.com/Kinto/kinto/pull/977"&gt;Adding Support to OpenAPI to Kinto&lt;/a&gt;,
+one of the features that most called my attention was the support
+for automated client generation. This may save a lot of time and effort
+for developers which may want to code on client languages that are currently not
+supported by …&lt;/p&gt;</summary><content type="html">&lt;p&gt;While working with
+&lt;a class="reference external" href="https://github.com/Kinto/kinto/pull/977"&gt;Adding Support to OpenAPI to Kinto&lt;/a&gt;,
+one of the features that most called my attention was the support
+for automated client generation. This may save a lot of time and effort
+for developers which may want to code on client languages that are currently not
+supported by the Kinto project.&lt;/p&gt;
+&lt;p&gt;On this quick tutorial I'm going to show how to create clients using
+the Swagger Code Generator API and use some of it's features. If you plan to
+follow this in detail, I recommend downloading
+&lt;a class="reference external" href="https://github.com/gabisurita/kinto-codegen-tutorial"&gt;this example repository&lt;/a&gt;
+with the code and documentation examples used. In some parts I'll assume some
+familiarity with Kinto HTTP API. For more information, please check the
+&lt;a class="reference external" href="https://kinto.readthedocs.io/en/stable/"&gt;Oficial Documentation&lt;/a&gt; or the
+&lt;a class="reference external" href="https://app.swaggerhub.com/api/gabisurita/kinto/1.13"&gt;OpenAPI interactive documentation&lt;/a&gt;.
+Some Python and PHP basics are also useful.&lt;/p&gt;
+&lt;div class="section" id="generating-a-python-client"&gt;
+&lt;h2&gt;Generating a Python client&lt;/h2&gt;
+&lt;p&gt;To begin with our client generation. We can install the release version of
+&lt;a class="reference external" href="https://github.com/swagger-api/swagger-codegen"&gt;swagger-codegen&lt;/a&gt;
+and follow its instructions on how to generate a client. But wait!
+What if I'm lazy and don't to generate the client myself?
+The code generator has &lt;a class="reference external" href="https://generator.swagger.io/"&gt;it's own API&lt;/a&gt;
+for creating clients (would be surprising if they don't). Let's try it!&lt;/p&gt;
+&lt;!-- TODO Replace examples with https://kinto.dev.mozaws.net/ once released --&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;{&amp;quot;swaggerUrl&amp;quot;: &amp;quot;https://raw.githubusercontent.com/gabisurita/kinto/631-swagger/swagger.yaml&amp;quot;}&amp;#39;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; http post https://generator.swagger.io/api/gen/clients/python --verify&lt;span class="o"&gt;=&lt;/span&gt;no
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;HTTP&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mf"&gt;1.1&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt; &lt;span class="nx"&gt;OK&lt;/span&gt;
+&lt;span class="nx"&gt;Access&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;Control&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;Allow&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;Headers&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Content&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;Type&lt;/span&gt;
+&lt;span class="nx"&gt;Access&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;Control&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;Allow&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;Methods&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;GET&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;POST&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;DELETE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;PUT&lt;/span&gt;
+&lt;span class="nx"&gt;Access&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;Control&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;Allow&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;Origin&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;span class="nx"&gt;Connection&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;close&lt;/span&gt;
+&lt;span class="nx"&gt;Content&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;Length&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;139&lt;/span&gt;
+&lt;span class="nx"&gt;Content&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;Type&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;application&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;json&lt;/span&gt;
+&lt;span class="nb"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Thu&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;15&lt;/span&gt; &lt;span class="nx"&gt;Dec&lt;/span&gt; &lt;span class="mi"&gt;2016&lt;/span&gt; &lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;18&lt;/span&gt; &lt;span class="nx"&gt;GMT&lt;/span&gt;
+&lt;span class="nx"&gt;Server&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Jetty&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;9.2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;v20150224&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;code&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;9351bd60-8f62-42c6-b865-388d6938d2a6&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;link&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://generator.swagger.io/api/gen/download/9351bd60-8f62-42c6-b865-388d6938d2a6&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We now have a link to our generated client, let's download and unzip it.
+&lt;strong&gt;You should replace the download link with the one you've got on the last request&lt;/strong&gt;.
+The links generated by the API can only be used once.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;http get https://generator.swagger.io/api/gen/download/9351bd60-8f62-42c6-b865-388d6938d2a6 &lt;span class="se"&gt;\&lt;/span&gt;
+--download --verify&lt;span class="o"&gt;=&lt;/span&gt;no
+unzip python-generated-client.zip
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="testing-the-generated-client"&gt;
+&lt;h2&gt;Testing the generated client&lt;/h2&gt;
+&lt;p&gt;Weeeeeeee!!! We've got our client! Try exploring the code and
+&lt;a class="reference external" href="https://github.com/gabisurita/kinto-codegen-tutorial/blob/master/python-client"&gt;reading the client documentation&lt;/a&gt;.
+Notice that the generated client is a &lt;em&gt;almost ready&lt;/em&gt; Python package,
+so we can easily deploy it or install it with pip. Now, let's create a
+directory and setup and activate a &lt;cite&gt;virtualenv&lt;/cite&gt; for an app that will use the client.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir python-app
+virtualenv python-app/venv
+&lt;span class="nb"&gt;source&lt;/span&gt; python-app/venv/bin/activate
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We can now install our client with pip.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install -e python-client
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We may start coding our app logic by creating an &lt;tt class="docutils literal"&gt;app.py&lt;/tt&gt; file.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;swagger_client&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Configure HTTP basicAuth&lt;/span&gt;
+&lt;span class="n"&gt;swagger_client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;configuration&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Gabi&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;swagger_client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;configuration&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;ILoveCats&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# create a client instance&lt;/span&gt;
+&lt;span class="n"&gt;client&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;swagger_client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;KintoApi&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Our bucket data (one way is to define it as a dict)&lt;/span&gt;
+&lt;span class="n"&gt;buck&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;openapi&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;description&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;OpenAPI bucket&amp;#39;&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;permissions&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;read&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;system.Everyone&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Create our bucket&lt;/span&gt;
+&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create_bucket&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bucket&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;buck&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Our collection data (we can define it as a Collection instance)&lt;/span&gt;
+&lt;span class="n"&gt;col&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;swagger_client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Collection&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;description&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;What we know about our clients&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;permissions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;write&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;system.Everyone&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]}&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Create or update our collection&lt;/span&gt;
+&lt;span class="n"&gt;col&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;update_collection&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;openapi&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;clients&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;collection&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Create a few records by batch&lt;/span&gt;
+&lt;span class="n"&gt;batch&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;swagger_client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Batch&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;batch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;defaults&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;method&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;POST&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;path&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/buckets/openapi/collections/clients/records&amp;#39;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;batch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;requests&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;body&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;python&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;tested&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;}}},&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;body&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;php&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;tested&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;}}},&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;body&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;haskell&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;tested&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;}}}&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Get our created records. What if we also want the headers?&lt;/span&gt;
+&lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_records_with_http_info&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;openapi&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;clients&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;status&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;headers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# But wait! There something there that sould be patched!&lt;/span&gt;
+&lt;span class="n"&gt;record&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_record&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;openapi&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;clients&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;python&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;record&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;tested&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;patch_record&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;openapi&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;clients&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;python&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;record&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;record&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Let&amp;#39;s get only the changes&lt;/span&gt;
+&lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_records&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;openapi&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;clients&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;since&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;headers&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ETag&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now we can run our app. This looks nice, doesn't it? But wait a minute!
+Why would we need a generated Python client if we already have our fancy
+&lt;a class="reference external" href="https://github.com/Kinto/kinto-http.py"&gt;kinto-http.py&lt;/a&gt; client?
+We actually may never use it, but this helped me on managing the client generator
+&lt;em&gt;less friendly&lt;/em&gt; languages, as we will see at out next example, a PHP client.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="generating-a-php-client"&gt;
+&lt;h2&gt;Generating a PHP client&lt;/h2&gt;
+&lt;p&gt;I will go fast with the generation steps this time.
+Don't forget to replace the download command with your own link.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;{&amp;quot;swaggerUrl&amp;quot;:&amp;quot;https://raw.githubusercontent.com/gabisurita/kinto/631-swagger/swagger.yaml&amp;quot;}&amp;#39;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; http post https://generator.swagger.io/api/gen/clients/php --verify&lt;span class="o"&gt;=&lt;/span&gt;no
+
+http get https://generator.swagger.io/api/gen/download/9351bd60-8f62-42c6-b865-388d6938d2a6 &lt;span class="se"&gt;\&lt;/span&gt;
+--download --verify&lt;span class="o"&gt;=&lt;/span&gt;no
+
+unzip php-generated-client.zip
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;PHP doesn't support keyword arguments by default, so we need to
+&lt;a class="reference external" href="https://github.com/gabisurita/kinto-codegen-tutorial/tree/master/php-client/SwaggerClient-php"&gt;check the documentation&lt;/a&gt;
+on how to pass parameters to our methods, but don't worry, it's quite intuitive. Let's see
+for example the &lt;tt class="docutils literal"&gt;create_bucket&lt;/tt&gt; Operation entry.&lt;/p&gt;
+&lt;div class="section" id="createbucket"&gt;
+&lt;h3&gt;&lt;strong&gt;createBucket&lt;/strong&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;cite&gt;SwaggerClientModelBucket createBucket($bucket, $if_match, $if_none_match)&lt;/cite&gt;&lt;/blockquote&gt;
+&lt;p&gt;So now we have an idea on how the operation looks like. You may want to check the others too.
+Managing packages in PHP is a lot more tricky than in Python, so we'll skip it for this
+example. Let's suppose we want to share our app integrated to the client, so we can
+just create an &lt;tt class="docutils literal"&gt;app.php&lt;/tt&gt; file on the root of our just generated client. Now may we try
+some PHP.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class="k"&gt;require_once&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;SwaggerClient-php/autoload.php&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="c1"&gt;// Configure HTTP basic authorization: basicAuth&lt;/span&gt;
+&lt;span class="nv"&gt;$config&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;Swagger\Client\Configuration&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="na"&gt;getDefaultConfiguration&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="nv"&gt;$config&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;setUsername&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Gabi&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="nv"&gt;$config&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;setPassword&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;IReallyHatePHP&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  &lt;span class="c1"&gt;// Please keep it a secret&lt;/span&gt;
+
+&lt;span class="c1"&gt;// Create an API instance to make requests&lt;/span&gt;
+&lt;span class="nv"&gt;$api_instance&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Swagger\Client\Api\KintoApi&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+&lt;span class="c1"&gt;// Our Bucket data&lt;/span&gt;
+&lt;span class="nv"&gt;$bucket&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;php_bucket&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;my_precious&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;True&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="c1"&gt;// Create a bucket&lt;/span&gt;
+&lt;span class="nv"&gt;$api_instance&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;createBucket&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$bucket&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="c1"&gt;// Create a collection &amp;#39;Good Moments&amp;#39; under the bucket&lt;/span&gt;
+&lt;span class="nv"&gt;$api_instance&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;updateCollection&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;php_bucket&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;good_memories&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="c1"&gt;// Create some records&lt;/span&gt;
+&lt;span class="nv"&gt;$record&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;description&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Release of PHP 5.5&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;span class="nv"&gt;$api_instance&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;createRecord&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;php_bucket&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;good_memories&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$record&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="nv"&gt;$record&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;description&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Stop coding PHP&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;span class="nv"&gt;$api_instance&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;createRecord&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;php_bucket&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;good_memories&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$record&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="nv"&gt;$record&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;description&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;My PC coded PHP for me&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;span class="nv"&gt;$api_instance&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;createRecord&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;php_bucket&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;good_memories&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$record&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="c1"&gt;// Fetch all our records&lt;/span&gt;
+&lt;span class="nv"&gt;$result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$api_instance&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getRecords&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;php_bucket&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;good_memories&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="nb"&gt;print_r&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$result&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="c1"&gt;// Enough of PHP&lt;/span&gt;
+&lt;span class="nv"&gt;$result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$api_instance&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;deleteBucket&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;php_bucket&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Yeeey! We actually used Kinto with PHP with almost no effort!
+Isn't this amazing (despite the fact that we just coded PHP)?
+You may run the and check it's outputs.&lt;/p&gt;
+&lt;p&gt;This tutorial may be extended once the OpenAPI specification is merged
+to the Kinto repository. If you want to try an specific language
+(like Haskell, I really want to try Haskell), you may
+also suggest it for me and we can try this adventure together! See you!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content><category term="Swagger"></category><category term="OpenAPI"></category><category term="Kinto"></category><category term="Mozilla"></category><category term="Outreachy"></category><category term="Client Generation"></category></entry><entry><title>Testing an OpenAPI Spec with Bravado</title><link href="gabisurita.github.io/openapi-logic-validation.html" rel="alternate"></link><published>2016-12-09T01:22:00-02:00</published><updated>2016-12-09T01:22:00-02:00</updated><author><name>Gabriela Surita</name></author><id>tag:None,2016-12-09:gabisurita.github.io/openapi-logic-validation.html</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/OAI/OpenAPI-Specification"&gt;OpenAPI&lt;/a&gt; (formally known as Swagger)
+is a standard to describe REST APIs on a computer and human readable way.
+It can be used with several utilities, like automated server and client code generation,
+generating interactive documentation, prototyping and mock testing.&lt;/p&gt;
+&lt;p&gt;The Swagger way of describing an API usually assumes you …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/OAI/OpenAPI-Specification"&gt;OpenAPI&lt;/a&gt; (formally known as Swagger)
 is a standard to describe REST APIs on a computer and human readable way.
 It can be used with several utilities, like automated server and client code generation,
 generating interactive documentation, prototyping and mock testing.&lt;/p&gt;
@@ -218,7 +436,9 @@ This increases a bit the amount of code needed, but allow us more modularity.&lt
 &lt;p&gt;So, I hope that you found this helpful! Feel free to contact me for upgrades
 on this tutorial by email or opening an issue on its repository. See you! :)&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="Swagger"></category><category term="OpenAPI"></category><category term="Bravado"></category><category term="Testing"></category><category term="Python"></category></entry><entry><title>Just starting</title><link href="gabisurita.github.io/first.html" rel="alternate"></link><published>2016-12-07T11:57:00-02:00</published><updated>2016-12-07T11:57:00-02:00</updated><author><name>Gabriela Surita</name></author><id>tag:,2016-12-07:gabisurita.github.io/first.html</id><summary type="html">&lt;p&gt;I've always wanted to have a blog, but always used an excuse for not creating and updating it.
+</content><category term="Swagger"></category><category term="OpenAPI"></category><category term="Bravado"></category><category term="Testing"></category><category term="Python"></category></entry><entry><title>Just starting</title><link href="gabisurita.github.io/first.html" rel="alternate"></link><published>2016-12-07T11:57:00-02:00</published><updated>2016-12-07T11:57:00-02:00</updated><author><name>Gabriela Surita</name></author><id>tag:None,2016-12-07:gabisurita.github.io/first.html</id><summary type="html">&lt;p&gt;I've always wanted to have a blog, but always used an excuse for not creating and updating it.
+I've used to think that nobody was going to read it or what I did wasn't important enough.
+Recently I've started to get involved with open software and specially Mozilla at project …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've always wanted to have a blog, but always used an excuse for not creating and updating it.
 I've used to think that nobody was going to read it or what I did wasn't important enough.
 Recently I've started to get involved with open software and specially Mozilla at project
 called Outreachy (and was eventually accepted for it) and it's the first time that I feel
@@ -234,4 +454,4 @@ and sharing abilities. My main attribution during my 3 month internship is to &l
 for OpenAPI to Kinto&lt;/a&gt;.
 I'll go through technical details on the future.&lt;/p&gt;
 &lt;p&gt;So, thank you for your attention and I hope you'll enjoy the content. :)&lt;/p&gt;
-</summary><category term="outreachy"></category></entry></feed>
+</content><category term="outreachy"></category></entry></feed>

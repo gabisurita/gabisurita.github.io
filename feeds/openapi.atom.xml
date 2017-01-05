@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Gabi Surita</title><link href="gabisurita.github.io/" rel="alternate"></link><link href="gabisurita.github.io/feeds/openapi.atom.xml" rel="self"></link><id>gabisurita.github.io/</id><updated>2016-12-09T01:22:00-02:00</updated><entry><title>Testing an OpenAPI Spec with Bravado</title><link href="gabisurita.github.io/openapi-logic-validation.html" rel="alternate"></link><published>2016-12-09T01:22:00-02:00</published><updated>2016-12-09T01:22:00-02:00</updated><author><name>Gabriela Surita</name></author><id>tag:,2016-12-09:gabisurita.github.io/openapi-logic-validation.html</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/OAI/OpenAPI-Specification"&gt;OpenAPI&lt;/a&gt; (formally known as Swagger)
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Gabi Surita - OpenAPI</title><link href="gabisurita.github.io/" rel="alternate"></link><link href="gabisurita.github.io/feeds/openapi.atom.xml" rel="self"></link><id>gabisurita.github.io/</id><updated>2016-12-09T01:22:00-02:00</updated><entry><title>Testing an OpenAPI Spec with Bravado</title><link href="gabisurita.github.io/openapi-logic-validation.html" rel="alternate"></link><published>2016-12-09T01:22:00-02:00</published><updated>2016-12-09T01:22:00-02:00</updated><author><name>Gabriela Surita</name></author><id>tag:None,2016-12-09:gabisurita.github.io/openapi-logic-validation.html</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/OAI/OpenAPI-Specification"&gt;OpenAPI&lt;/a&gt; (formally known as Swagger)
+is a standard to describe REST APIs on a computer and human readable way.
+It can be used with several utilities, like automated server and client code generation,
+generating interactive documentation, prototyping and mock testing.&lt;/p&gt;
+&lt;p&gt;The Swagger way of describing an API usually assumes you …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/OAI/OpenAPI-Specification"&gt;OpenAPI&lt;/a&gt; (formally known as Swagger)
 is a standard to describe REST APIs on a computer and human readable way.
 It can be used with several utilities, like automated server and client code generation,
 generating interactive documentation, prototyping and mock testing.&lt;/p&gt;
@@ -218,4 +222,4 @@ This increases a bit the amount of code needed, but allow us more modularity.&lt
 &lt;p&gt;So, I hope that you found this helpful! Feel free to contact me for upgrades
 on this tutorial by email or opening an issue on its repository. See you! :)&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="Swagger"></category><category term="OpenAPI"></category><category term="Bravado"></category><category term="Testing"></category><category term="Python"></category></entry></feed>
+</content><category term="Swagger"></category><category term="OpenAPI"></category><category term="Bravado"></category><category term="Testing"></category><category term="Python"></category></entry></feed>
