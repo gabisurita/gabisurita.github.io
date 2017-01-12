@@ -9,37 +9,37 @@ Building self-documented APIs
 
 
 First, I'm sorry for taking too long since the last post, but I was a bit busy during
-the holidays and one of the things that I was most involved is this package called
+the holidays and one of the things that I was most involved in is this package called
 `cornice.ext.swagger <https://github.com/Cornices/cornice.ext.swagger>`_,
 which I'll explain soon.
 
 As I mentioned on my blog post about `testing OpenAPI specification <testing-swagger-spec>`_
 the OpenAPI/Swagger workflow usually assumes you are creating the specification before
-coding the API, but as I said before, there are many use cases where you already have
-a working API or just wants to start with coding ASAP anf just want to integrate
+coding the API there are many use cases where you already have
+a working API or just wants to start with coding ASAP and just want to add
 the documentation later.
 
 Writing the specification by hand and testing it with ``Bravado`` or ``Flex``, like I did on
-the last post, is somehow fast approach that doesn't involving changing the API code.
+the last post, is somewhat fast approach that doesn't involving changing the API code.
 This makes it useful for several cases, but when working with some huge APIs, it
-can be tedious and lead to imprecisions on the documentation, as it becomes
+can be tedious and lead to vagueness in the documentation, as it becomes
 complicated for one or a small group of people to know all the aspects of the API.
 
-To deal with this, a somehow different approach is to use a documentation generator, which
+To deal with this, a different approach is to use a documentation generator, which
 I'll let you guess what it is.
 
 
 OpenAPI documentation generators
 --------------------------------
 
-Well, not for so long. An OpenAPI documentation generator does exactly what the name
+Well, time's up. An OpenAPI documentation generator does exactly what the name
 suggests, it creates an OpenAPI specification directly from the API runnable code.
 But how is that possible? Well, there are a few things that are part of the documentation
-that are strictly related to the code, but as there's no free lunch, there are a few
-things that probably can't be extracted directly from the code, so you may need add or patch
+that are derived from code, but as there's no free lunch, there are a few
+things that probably can't be extracted directly from the code, so you may need to add or patch
 some things on the API to make it "self-documentable".
 
-But that's enough talking lets try some examples. One cool package for building
+But that's enough talking -- let's try some examples. One cool package for building
 such APIs using Flask is called
 `flasgger <https://github.com/rochacbruno/flasgger>`_. You may install it with::
 
@@ -146,7 +146,7 @@ providing a huge separate `swagger.yaml` file and not having the documentation c
 to the code. Got interested on this? Please check some more examples
 `at their repository <https://github.com/rochacbruno/flasgger>`_.
 But some may think: can we do better? There's still a lot of
-raw swagger on the docstring and that's something we usually don't want.
+raw swagger in the docstring and that's something we usually don't want.
 An answer I can give is that for `Cornice <https://github.com/Cornices/cornice>`, we can.
 
 
@@ -167,7 +167,7 @@ You may install `cornice_swagger` package with::
     $ pip install cornice_swagger
 
 
-Now lets try a simple app:
+Now let's try a simple app:
 
 .. code-block:: python
 
