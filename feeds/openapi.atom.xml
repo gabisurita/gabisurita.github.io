@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Gabi Surita - OpenAPI</title><link href="gabisurita.github.io/" rel="alternate"></link><link href="gabisurita.github.io/feeds/openapi.atom.xml" rel="self"></link><id>gabisurita.github.io/</id><updated>2017-01-10T22:19:00-02:00</updated><entry><title>Building self-documented APIs</title><link href="gabisurita.github.io/self-documented-apis.html" rel="alternate"></link><published>2017-01-10T22:19:00-02:00</published><updated>2017-01-10T22:19:00-02:00</updated><author><name>Gabriela Surita</name></author><id>tag:None,2017-01-10:gabisurita.github.io/self-documented-apis.html</id><summary type="html">&lt;p&gt;First, I'm sorry for taking too long since the last post, but I was a bit busy during
-the holidays and one of the things that I was most involved is this package called
+the holidays and one of the things that I was most involved in is this package called
 &lt;a class="reference external" href="https://github.com/Cornices/cornice.ext.swagger"&gt;cornice.ext.swagger&lt;/a&gt;,
 which I'll explain soon.&lt;/p&gt;
-&lt;p&gt;As I mentioned on my blog post about &lt;a class="reference external" href="testing-swagger-spec"&gt;testing …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;First, I'm sorry for taking too long since the last post, but I was a bit busy during
-the holidays and one of the things that I was most involved is this package called
+&lt;p&gt;As I mentioned on my blog post about …&lt;/p&gt;</summary><content type="html">&lt;p&gt;First, I'm sorry for taking too long since the last post, but I was a bit busy during
+the holidays and one of the things that I was most involved in is this package called
 &lt;a class="reference external" href="https://github.com/Cornices/cornice.ext.swagger"&gt;cornice.ext.swagger&lt;/a&gt;,
 which I'll explain soon.&lt;/p&gt;
 &lt;p&gt;As I mentioned on my blog post about &lt;a class="reference external" href="testing-swagger-spec"&gt;testing OpenAPI specification&lt;/a&gt;
 the OpenAPI/Swagger workflow usually assumes you are creating the specification before
-coding the API, but as I said before, there are many use cases where you already have
-a working API or just wants to start with coding ASAP anf just want to integrate
+coding the API there are many use cases where you already have
+a working API or just wants to start with coding ASAP and just want to add
 the documentation later.&lt;/p&gt;
 &lt;p&gt;Writing the specification by hand and testing it with &lt;tt class="docutils literal"&gt;Bravado&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;Flex&lt;/tt&gt;, like I did on
-the last post, is somehow fast approach that doesn't involving changing the API code.
+the last post, is somewhat fast approach that doesn't involving changing the API code.
 This makes it useful for several cases, but when working with some huge APIs, it
-can be tedious and lead to imprecisions on the documentation, as it becomes
+can be tedious and lead to vagueness in the documentation, as it becomes
 complicated for one or a small group of people to know all the aspects of the API.&lt;/p&gt;
-&lt;p&gt;To deal with this, a somehow different approach is to use a documentation generator, which
+&lt;p&gt;To deal with this, a different approach is to use a documentation generator, which
 I'll let you guess what it is.&lt;/p&gt;
 &lt;div class="section" id="openapi-documentation-generators"&gt;
 &lt;h2&gt;OpenAPI documentation generators&lt;/h2&gt;
-&lt;p&gt;Well, not for so long. An OpenAPI documentation generator does exactly what the name
+&lt;p&gt;Well, time's up. An OpenAPI documentation generator does exactly what the name
 suggests, it creates an OpenAPI specification directly from the API runnable code.
 But how is that possible? Well, there are a few things that are part of the documentation
-that are strictly related to the code, but as there's no free lunch, there are a few
-things that probably can't be extracted directly from the code, so you may need add or patch
+that are derived from code, but as there's no free lunch, there are a few
+things that probably can't be extracted directly from the code, so you may need to add or patch
 some things on the API to make it &amp;quot;self-documentable&amp;quot;.&lt;/p&gt;
-&lt;p&gt;But that's enough talking lets try some examples. One cool package for building
+&lt;p&gt;But that's enough talking -- let's try some examples. One cool package for building
 such APIs using Flask is called
 &lt;a class="reference external" href="https://github.com/rochacbruno/flasgger"&gt;flasgger&lt;/a&gt;. You may install it with:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
@@ -127,7 +127,7 @@ providing a huge separate &lt;cite&gt;swagger.yaml&lt;/cite&gt; file and not hav
 to the code. Got interested on this? Please check some more examples
 &lt;a class="reference external" href="https://github.com/rochacbruno/flasgger"&gt;at their repository&lt;/a&gt;.
 But some may think: can we do better? There's still a lot of
-raw swagger on the docstring and that's something we usually don't want.
+raw swagger in the docstring and that's something we usually don't want.
 An answer I can give is that for &lt;cite&gt;Cornice &amp;lt;https://github.com/Cornices/cornice&amp;gt;&lt;/cite&gt;, we can.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="cornice-swagger"&gt;
@@ -144,7 +144,7 @@ that I totally recommend if this is the first time you hear that name.&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 $ pip install cornice_swagger
 &lt;/pre&gt;
-&lt;p&gt;Now lets try a simple app:&lt;/p&gt;
+&lt;p&gt;Now let'ss try a simple app:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;colander&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;cornice&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Service&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;cornice.service&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;get_services&lt;/span&gt;

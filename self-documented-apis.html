@@ -22,7 +22,7 @@
 
 
     <meta name="author" content="Gabriela Surita">
-    <meta name="description" content="First, I'm sorry for taking too long since the last post, but I was a bit busy during the holidays and one of the things that I was most involved is this package called cornice.ext.swagger, which I'll explain soon. As I mentioned on my blog post about testing …">
+    <meta name="description" content="First, I'm sorry for taking too long since the last post, but I was a bit busy during the holidays and one of the things that I was most involved in is this package called cornice.ext.swagger, which I'll explain soon. As I mentioned on my blog post about …">
   <meta name="tags" contents="Swagger, OpenAPI, Kinto, Mozilla, Outreachy, cornice, ">
 </head>
 
@@ -69,30 +69,30 @@
     </ul>
     <div class="post-content">
       <p>First, I'm sorry for taking too long since the last post, but I was a bit busy during
-the holidays and one of the things that I was most involved is this package called
+the holidays and one of the things that I was most involved in is this package called
 <a class="reference external" href="https://github.com/Cornices/cornice.ext.swagger">cornice.ext.swagger</a>,
 which I'll explain soon.</p>
 <p>As I mentioned on my blog post about <a class="reference external" href="testing-swagger-spec">testing OpenAPI specification</a>
 the OpenAPI/Swagger workflow usually assumes you are creating the specification before
-coding the API, but as I said before, there are many use cases where you already have
-a working API or just wants to start with coding ASAP anf just want to integrate
+coding the API there are many use cases where you already have
+a working API or just wants to start with coding ASAP and just want to add
 the documentation later.</p>
 <p>Writing the specification by hand and testing it with <tt class="docutils literal">Bravado</tt> or <tt class="docutils literal">Flex</tt>, like I did on
-the last post, is somehow fast approach that doesn't involving changing the API code.
+the last post, is somewhat fast approach that doesn't involving changing the API code.
 This makes it useful for several cases, but when working with some huge APIs, it
-can be tedious and lead to imprecisions on the documentation, as it becomes
+can be tedious and lead to vagueness in the documentation, as it becomes
 complicated for one or a small group of people to know all the aspects of the API.</p>
-<p>To deal with this, a somehow different approach is to use a documentation generator, which
+<p>To deal with this, a different approach is to use a documentation generator, which
 I'll let you guess what it is.</p>
 <div class="section" id="openapi-documentation-generators">
 <h2>OpenAPI documentation generators</h2>
-<p>Well, not for so long. An OpenAPI documentation generator does exactly what the name
+<p>Well, time's up. An OpenAPI documentation generator does exactly what the name
 suggests, it creates an OpenAPI specification directly from the API runnable code.
 But how is that possible? Well, there are a few things that are part of the documentation
-that are strictly related to the code, but as there's no free lunch, there are a few
-things that probably can't be extracted directly from the code, so you may need add or patch
+that are derived from code, but as there's no free lunch, there are a few
+things that probably can't be extracted directly from the code, so you may need to add or patch
 some things on the API to make it &quot;self-documentable&quot;.</p>
-<p>But that's enough talking lets try some examples. One cool package for building
+<p>But that's enough talking -- let's try some examples. One cool package for building
 such APIs using Flask is called
 <a class="reference external" href="https://github.com/rochacbruno/flasgger">flasgger</a>. You may install it with:</p>
 <pre class="literal-block">
@@ -192,7 +192,7 @@ providing a huge separate <cite>swagger.yaml</cite> file and not having the docu
 to the code. Got interested on this? Please check some more examples
 <a class="reference external" href="https://github.com/rochacbruno/flasgger">at their repository</a>.
 But some may think: can we do better? There's still a lot of
-raw swagger on the docstring and that's something we usually don't want.
+raw swagger in the docstring and that's something we usually don't want.
 An answer I can give is that for <cite>Cornice &lt;https://github.com/Cornices/cornice&gt;</cite>, we can.</p>
 </div>
 <div class="section" id="cornice-swagger">
@@ -209,7 +209,7 @@ that I totally recommend if this is the first time you hear that name.</p>
 <pre class="literal-block">
 $ pip install cornice_swagger
 </pre>
-<p>Now lets try a simple app:</p>
+<p>Now let'ss try a simple app:</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">colander</span>
 <span class="kn">from</span> <span class="nn">cornice</span> <span class="kn">import</span> <span class="n">Service</span>
 <span class="kn">from</span> <span class="nn">cornice.service</span> <span class="kn">import</span> <span class="n">get_services</span>
