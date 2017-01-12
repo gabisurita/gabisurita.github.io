@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Gabi Surita</title><link>gabisurita.github.io/</link><description></description><lastBuildDate>Mon, 19 Dec 2016 09:22:00 -0200</lastBuildDate><item><title>Creating clients for Kinto using Swagger Codegen</title><link>gabisurita.github.io/kinto-client-generation.html</link><description>&lt;p&gt;While working with
+<rss version="2.0"><channel><title>Gabi Surita</title><link>gabisurita.github.io/</link><description></description><lastBuildDate>Tue, 10 Jan 2017 22:19:00 -0200</lastBuildDate><item><title>Building self-documented APIs</title><link>gabisurita.github.io/self-documented-apis.html</link><description>&lt;p&gt;First, I'm sorry for taking too long since the last post, but I was a bit busy during
+the holidays and one of the things that I was most involved is this package called
+&lt;a class="reference external" href="https://github.com/Cornices/cornice.ext.swagger"&gt;cornice.ext.swagger&lt;/a&gt;,
+which I'll explain soon.&lt;/p&gt;
+&lt;p&gt;As I mentioned on my blog post about &lt;a class="reference external" href="testing-swagger-spec"&gt;testing …&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Gabriela Surita</dc:creator><pubDate>Tue, 10 Jan 2017 22:19:00 -0200</pubDate><guid isPermaLink="false">tag:None,2017-01-10:gabisurita.github.io/self-documented-apis.html</guid><category>Swagger</category><category>OpenAPI</category><category>Kinto</category><category>Mozilla</category><category>Outreachy</category><category>cornice</category></item><item><title>Creating clients for Kinto using Swagger Codegen</title><link>gabisurita.github.io/kinto-client-generation.html</link><description>&lt;p&gt;While working with
 &lt;a class="reference external" href="https://github.com/Kinto/kinto/pull/977"&gt;Adding Support to OpenAPI to Kinto&lt;/a&gt;,
 one of the features that most called my attention was the support
 for automated client generation. This may save a lot of time and effort

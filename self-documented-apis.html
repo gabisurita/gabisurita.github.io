@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="./self-documented-apis.html" />
+
+    <title>  Gabi Surita &mdash; Building self-documented APIs
+</title>
+
+
+
+
+    <link rel="stylesheet" href="./theme/css/style.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <meta name="author" content="Gabriela Surita">
+    <meta name="description" content="First, I'm sorry for taking too long since the last post, but I was a bit busy during the holidays and one of the things that I was most involved is this package called cornice.ext.swagger, which I'll explain soon. As I mentioned on my blog post about testing …">
+  <meta name="tags" contents="Swagger, OpenAPI, Kinto, Mozilla, Outreachy, cornice, ">
+</head>
+
+<body>
+<header class="header">
+  <div class="container">
+      <div class="header-image pull-left">
+        <a class="nodec" href="."><img src=/theme/img/prof-150x150.jpg></a>
+      </div>
+    <div class="header-inner">
+      <h1 class="header-name">
+        <a class="nodec" href=".">Gabi Surita</a>
+      </h1>
+      <h3 class="header-text"></h3>
+      <ul class="header-menu list-inline">
+          <li><a class="nodec icon-mail-alt" href="mailto:gsurita@mozilla.com"></a></li>
+          <li><a class="nodec icon-github" href="https://github.com/gabisurita"></a></li>
+          <li><a class="nodec icon-facebook" href="https://www.facebook.com/gabsurita"></a></li>
+      </ul>
+    </div>
+  </div>
+</header> <!-- /.header -->  <div class="container">
+  <div class="post full-post">
+    <h1 class="post-title">
+      <a href="/self-documented-apis.html" title="Permalink to Building self-documented APIs">Building self-documented APIs</a>
+    </h1>
+    <ul class="list-inline">
+      <li class="post-date">
+        <a class="text-muted" href="/self-documented-apis.html" title="2017-01-10T22:19:00-02:00">Tue 10 January 2017</a>
+      </li>
+      <li class="muted">&middot;</li>
+      <li class="post-category">
+        <a href="./category/openapi.html">OpenAPI</a>
+      </li>
+        <li class="muted">&middot;</li>
+        <li>
+            <a href="/tag/Swagger.html">Swagger</a>,             <a href="/tag/OpenAPI.html">OpenAPI</a>,             <a href="/tag/Kinto.html">Kinto</a>,             <a href="/tag/Mozilla.html">Mozilla</a>,             <a href="/tag/Outreachy.html">Outreachy</a>,             <a href="/tag/cornice.html">cornice</a>        </li>
+        <li class="muted">&middot;</li>
+        <li>
+          <address class="post-author">
+            By <a href="./author/gabriela-surita.html">Gabriela Surita</a>
+          </address>
+        </li>
+    </ul>
+    <div class="post-content">
+      <p>First, I'm sorry for taking too long since the last post, but I was a bit busy during
+the holidays and one of the things that I was most involved is this package called
+<a class="reference external" href="https://github.com/Cornices/cornice.ext.swagger">cornice.ext.swagger</a>,
+which I'll explain soon.</p>
+<p>As I mentioned on my blog post about <a class="reference external" href="testing-swagger-spec">testing OpenAPI specification</a>
+the OpenAPI/Swagger workflows usually assumes you are creating the specification before
+coding the API, but as I said before, there are many use cases where you already have
+a working API or just wants to start with coding ASAP where you just want to integrate
+the documentation later.</p>
+<p>Writing the specification by hand and testing it with <cite>Bravado</cite> or <cite>Flex</cite>, like I did on
+the last post, is as somehow fast approach that doesn't involving changing the API code.
+This makes it useful for several cases, but when working with some huge APIs, it
+can be tedious and lead to imprecisions on the documentation, as it becomes
+complicated for one or a small group of people to know all the aspects of the API.</p>
+<p>To deal with this, a somehow different approach is to use a documentation generator, which
+I'll let you guess what it is.</p>
+<div class="section" id="openapi-documentation-generators">
+<h2>OpenAPI documentation generators</h2>
+<p>Well, not for so long. An OpenAPI documentation generator does exactly what the name
+suggests, it creates an OpenAPI specification directly from the API runnable code.
+But how is that possible? Well, there are a few things that are part of the documentation
+that are strictly related to the code, but as there's no free lunch, there are a few
+things that probably can't be extracted directly from the code, so you may need patch
+some things on the API to make it &quot;self-documentable&quot;.</p>
+<p>But that's enough talking let's try some examples. One cool package for building
+such APIs using Flask is called
+<a class="reference external" href="https://github.com/rochacbruno/flasgger">flasgger</a>. You may install it with:</p>
+<div class="highlight"><pre><span></span>pip install flasgger
+</pre></div>
+<p>And here follows a quick example:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">jsonify</span>
+<span class="kn">from</span> <span class="nn">flasgger</span> <span class="kn">import</span> <span class="n">Swagger</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">Swagger</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/api/&lt;string:username&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">user_api</span><span class="p">(</span><span class="n">username</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    User API</span>
+<span class="sd">    This resource returns user information</span>
+<span class="sd">    ---</span>
+<span class="sd">    tags:</span>
+<span class="sd">      - users</span>
+<span class="sd">    parameters:</span>
+<span class="sd">      - name: username</span>
+<span class="sd">        in: path</span>
+<span class="sd">        type: string</span>
+<span class="sd">        required: true</span>
+<span class="sd">    responses:</span>
+<span class="sd">      200:</span>
+<span class="sd">        description: A single user item</span>
+<span class="sd">        schema:</span>
+<span class="sd">          id: user_response</span>
+<span class="sd">          properties:</span>
+<span class="sd">            username:</span>
+<span class="sd">              type: string</span>
+<span class="sd">              description: The username</span>
+<span class="sd">              default: some_username</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">username</span><span class="p">})</span>
+
+
+<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+<p>So if you check <a class="reference external" href="http://localhost:5000/spec">http://localhost:5000/spec</a> you'll find the generated spec.
+we can see that the path was automatically set and what we documented is right below.
+The object schema we defined was also been broken into a reference at <cite>definitions</cite>
+section.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;swagger&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;info&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;API description&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;termsOfService&quot;</span><span class="o">:</span> <span class="s2">&quot;Terms of service&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;A swagger API&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;1.0.1&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;paths&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;/api/{username}&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;get&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;This resource returns user information&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;parameters&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;in&quot;</span><span class="o">:</span> <span class="s2">&quot;path&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;responses&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;200&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A single user item&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;schema&quot;</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="s2">&quot;$ref&quot;</span><span class="o">:</span> <span class="s2">&quot;#/definitions/user_api_get_user_response&quot;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;summary&quot;</span><span class="o">:</span> <span class="s2">&quot;User API&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;tags&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;users&quot;</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;definitions&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;user_api_get_user_response&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;username&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;default&quot;</span><span class="o">:</span> <span class="s2">&quot;some_username&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;The username&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>So what did you think? In my opinion that's a lot better for some use cases than
+providing a huge separate <cite>swagger.yaml</cite> file and not having the documentation close
+to the code. Got interested on this? Please check some more examples
+<a class="reference external" href="https://github.com/rochacbruno/flasgger">at their repository</a>.
+But some may think: can we do better? There's still a lot of
+raw swagger on the docstring and that's something we usually don't want.
+An answer I can give is that for <cite>Cornice &lt;https://github.com/Cornices/cornice&gt;</cite>, we can.</p>
+</div>
+<div class="section" id="cornice-swagger">
+<h2>Cornice Swagger</h2>
+<p>Cornice swagger is an OpenAPI documentation generator for
+<cite>Cornice &lt;https://github.com/Cornices/cornice&gt;</cite>. For those who don't know,
+Cornice is an extension for Pyramid that allows creating REST web services with almost
+no effort. I'll assume some basic knowledge about Cornice, but you may be able to understand
+even if you are unfamiliar with it. It also provides a very nice
+<a class="reference external" href="https://cornice.readthedocs.io/en/latest/quickstart.html">quickstart for peaple in a hurry</a>
+that I totally recommend if this is the first time you hear that name.</p>
+<p>Lets try a simple app:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">colander</span>
+<span class="kn">from</span> <span class="nn">cornice</span> <span class="kn">import</span> <span class="n">Service</span>
+<span class="kn">from</span> <span class="nn">cornice.service</span> <span class="kn">import</span> <span class="n">get_services</span>
+<span class="kn">from</span> <span class="nn">cornice.validators</span> <span class="kn">import</span> <span class="n">colander_body_validator</span>
+<span class="kn">from</span> <span class="nn">wsgiref.simple_server</span> <span class="kn">import</span> <span class="n">make_server</span>
+<span class="kn">from</span> <span class="nn">pyramid.config</span> <span class="kn">import</span> <span class="n">Configurator</span>
+<span class="kn">from</span> <span class="nn">cornice_swagger.swagger</span> <span class="kn">import</span> <span class="n">CorniceSwagger</span>
+
+<span class="n">_VALUES</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># Create a simple service that will store and retrieve values</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">Service</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+                 <span class="n">path</span><span class="o">=</span><span class="s1">&#39;/values/{value}&#39;</span><span class="p">,</span>
+                 <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Cornice Demo&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Create a request schema for storing values</span>
+<span class="k">class</span> <span class="nc">PutBodySchema</span><span class="p">(</span><span class="n">colander</span><span class="o">.</span><span class="n">MappingSchema</span><span class="p">):</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">colander</span><span class="o">.</span><span class="n">SchemaNode</span><span class="p">(</span><span class="n">colander</span><span class="o">.</span><span class="n">String</span><span class="p">(),</span>
+                                <span class="n">description</span><span class="o">=</span><span class="s1">&#39;My precious value&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Create our cornice service views</span>
+<span class="k">class</span> <span class="nc">MyValueApi</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;My precious API.&quot;&quot;&quot;</span>
+
+    <span class="nd">@values.get</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the value.&quot;&quot;&quot;</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">matchdict</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">_VALUES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+    <span class="nd">@values.put</span><span class="p">(</span><span class="n">validators</span><span class="o">=</span><span class="p">(</span><span class="n">colander_body_validator</span><span class="p">,</span> <span class="p">),</span>
+                <span class="n">schema</span><span class="o">=</span><span class="n">PutBodySchema</span><span class="p">())</span>
+    <span class="k">def</span> <span class="nf">set_value</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the value and returns *True* or *False*.&quot;&quot;&quot;</span>
+
+        <span class="n">key</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">matchdict</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">_VALUES</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">json_body</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+
+<span class="c1"># Create a service to serve our OpenAPI spec</span>
+<span class="n">swagger</span> <span class="o">=</span> <span class="n">Service</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;OpenAPI&#39;</span><span class="p">,</span>
+                  <span class="n">path</span><span class="o">=</span><span class="s1">&#39;/__api__&#39;</span><span class="p">,</span>
+                  <span class="n">description</span><span class="o">=</span><span class="s2">&quot;OpenAPI documentation&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@swagger.get</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">openAPI_spec</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">my_generator</span> <span class="o">=</span> <span class="n">CorniceSwagger</span><span class="p">(</span><span class="n">get_services</span><span class="p">())</span>
+    <span class="n">my_spec</span> <span class="o">=</span> <span class="n">my_generator</span><span class="p">(</span><span class="s1">&#39;MyAPI&#39;</span><span class="p">,</span> <span class="s1">&#39;1.0.0&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">my_spec</span>
+
+
+<span class="c1"># Setup and run our app</span>
+<span class="k">def</span> <span class="nf">setup</span><span class="p">():</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">Configurator</span><span class="p">()</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s2">&quot;cornice&quot;</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">make_wsgi_app</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">app</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">setup</span><span class="p">()</span>
+    <span class="n">server</span> <span class="o">=</span> <span class="n">make_server</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">8000</span><span class="p">,</span> <span class="n">app</span><span class="p">)</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+</pre></div>
+<p>And of course lets take a look at the resulting documentation. JSON may be a bit harsh
+to read but with time you should get used to it. The resulting documentation can be
+found at <cite>http://localhost:8000/__api__</cite>.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;swagger&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;MyAPI&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;basePath&quot;</span><span class="p">:</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;values&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;__api__&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+    <span class="s2">&quot;paths&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;/values/{value}&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;in&quot;</span><span class="p">:</span> <span class="s2">&quot;path&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;required&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;get&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Returns the value.&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;responses&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;UNDOCUMENTED RESPONSE&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;values&quot;</span>
+                <span class="p">],</span>
+                <span class="nt">&quot;produces&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;application/json&quot;</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;put&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;values&quot;</span>
+                <span class="p">],</span>
+                <span class="nt">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Set the value and returns *True* or *False*.&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;responses&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;UNDOCUMENTED RESPONSE&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PutBodySchema&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;in&quot;</span><span class="p">:</span> <span class="s2">&quot;body&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;schema&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nt">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                <span class="s2">&quot;value&quot;</span>
+                            <span class="p">],</span>
+                            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+                            <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                                    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;My precious value&quot;</span><span class="p">,</span>
+                                    <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Value&quot;</span>
+                                <span class="p">}</span>
+                            <span class="p">},</span>
+                            <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;PutBodySchema&quot;</span>
+                        <span class="p">},</span>
+                        <span class="nt">&quot;required&quot;</span><span class="p">:</span> <span class="kc">true</span>
+                    <span class="p">}</span>
+                <span class="p">],</span>
+                <span class="nt">&quot;produces&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;application/json&quot;</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;/__api__&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;get&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;__api__&quot;</span>
+                <span class="p">],</span>
+                <span class="nt">&quot;responses&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;UNDOCUMENTED RESPONSE&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nt">&quot;produces&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;application/json&quot;</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>So see the difference? Now we get our properties extracted automatically since we
+are now using a default schema validator defined with colander. Also, path parameters
+are also extracted from the path description and content-types come from renderers.
+This way we can extract much more information from useful code than with other approaches.</p>
+<p>But you may ask, what about responses? Well, I'm working on it right now, and perhaps
+I should stop writing at this moment and tell you when I'm finished.</p>
+<p>See you :)</p>
+</div>
+
+    </div>
+  </div>
+  <hr class="separator">
+  <div class="col-md-8 col-md-offset-2">
+  </div>
+  </div>
+<footer class="footer">
+  <div class="container">
+    <p class="text-center">
+      Gabriela Surita, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA 4.0</a> unless otherwise noted.
+    </p>
+    <div class="text-center">
+      Generated by <a href="http://getpelican.com" target="_blank">Pelican</a> with the <a href="http://github.com/nairobilug/pelican-alchemy">alchemy</a> theme.
+    </div>
+  </div>
+</footer> <!-- /.footer -->
+  <script src="./theme/js/jquery.min.js"></script>
+  <script src="./theme/js/bootstrap.min.js"></script>
+</body> <!-- 42 -->
+
+</html>
