@@ -144,7 +144,7 @@ that I totally recommend if this is the first time you hear that name.&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 $ pip install cornice_swagger
 &lt;/pre&gt;
-&lt;p&gt;Now let'ss try a simple app:&lt;/p&gt;
+&lt;p&gt;Now let's try a simple app:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;colander&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;cornice&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Service&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;cornice.service&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;get_services&lt;/span&gt;
