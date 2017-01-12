@@ -12,8 +12,8 @@ the OpenAPI/Swagger workflows usually assumes you are creating the specification
 coding the API, but as I said before, there are many use cases where you already have
 a working API or just wants to start with coding ASAP where you just want to integrate
 the documentation later.&lt;/p&gt;
-&lt;p&gt;Writing the specification by hand and testing it with &lt;cite&gt;Bravado&lt;/cite&gt; or &lt;cite&gt;Flex&lt;/cite&gt;, like I did on
-the last post, is as somehow fast approach that doesn't involving changing the API code.
+&lt;p&gt;Writing the specification by hand and testing it with &lt;tt class="docutils literal"&gt;Bravado&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;Flex&lt;/tt&gt;, like I did on
+the last post, is somehow fast approach that doesn't involving changing the API code.
 This makes it useful for several cases, but when working with some huge APIs, it
 can be tedious and lead to imprecisions on the documentation, as it becomes
 complicated for one or a small group of people to know all the aspects of the API.&lt;/p&gt;
