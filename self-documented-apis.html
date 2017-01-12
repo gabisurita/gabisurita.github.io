@@ -73,9 +73,9 @@ the holidays and one of the things that I was most involved is this package call
 <a class="reference external" href="https://github.com/Cornices/cornice.ext.swagger">cornice.ext.swagger</a>,
 which I'll explain soon.</p>
 <p>As I mentioned on my blog post about <a class="reference external" href="testing-swagger-spec">testing OpenAPI specification</a>
-the OpenAPI/Swagger workflows usually assumes you are creating the specification before
+the OpenAPI/Swagger workflow usually assumes you are creating the specification before
 coding the API, but as I said before, there are many use cases where you already have
-a working API or just wants to start with coding ASAP where you just want to integrate
+a working API or just wants to start with coding ASAP anf just want to integrate
 the documentation later.</p>
 <p>Writing the specification by hand and testing it with <tt class="docutils literal">Bravado</tt> or <tt class="docutils literal">Flex</tt>, like I did on
 the last post, is somehow fast approach that doesn't involving changing the API code.
@@ -90,13 +90,14 @@ I'll let you guess what it is.</p>
 suggests, it creates an OpenAPI specification directly from the API runnable code.
 But how is that possible? Well, there are a few things that are part of the documentation
 that are strictly related to the code, but as there's no free lunch, there are a few
-things that probably can't be extracted directly from the code, so you may need patch
+things that probably can't be extracted directly from the code, so you may need add or patch
 some things on the API to make it &quot;self-documentable&quot;.</p>
-<p>But that's enough talking let's try some examples. One cool package for building
+<p>But that's enough talking lets try some examples. One cool package for building
 such APIs using Flask is called
 <a class="reference external" href="https://github.com/rochacbruno/flasgger">flasgger</a>. You may install it with:</p>
-<div class="highlight"><pre><span></span>pip install flasgger
-</pre></div>
+<pre class="literal-block">
+$ pip install flasgger
+</pre>
 <p>And here follows a quick example:</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">jsonify</span>
 <span class="kn">from</span> <span class="nn">flasgger</span> <span class="kn">import</span> <span class="n">Swagger</span>
@@ -204,7 +205,11 @@ no effort. I'll assume some basic knowledge about Cornice, but you may be able t
 even if you are unfamiliar with it. It also provides a very nice
 <a class="reference external" href="https://cornice.readthedocs.io/en/latest/quickstart.html">quickstart for peaple in a hurry</a>
 that I totally recommend if this is the first time you hear that name.</p>
-<p>Lets try a simple app:</p>
+<p>You may install <cite>cornice_swagger</cite> package with:</p>
+<pre class="literal-block">
+$ pip install cornice_swagger
+</pre>
+<p>Now lets try a simple app:</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">colander</span>
 <span class="kn">from</span> <span class="nn">cornice</span> <span class="kn">import</span> <span class="n">Service</span>
 <span class="kn">from</span> <span class="nn">cornice.service</span> <span class="kn">import</span> <span class="n">get_services</span>
@@ -277,7 +282,7 @@ that I totally recommend if this is the first time you hear that name.</p>
     <span class="n">server</span> <span class="o">=</span> <span class="n">make_server</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">8000</span><span class="p">,</span> <span class="n">app</span><span class="p">)</span>
     <span class="n">server</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
 </pre></div>
-<p>And of course lets take a look at the resulting documentation. JSON may be a bit harsh
+<p>And of course we should take a look at the resulting documentation. JSON may be a bit harsh
 to read but with time you should get used to it. The resulting documentation can be
 found at <a class="reference external" href="http://localhost:8000/__api__">http://localhost:8000/__api__</a>.</p>
 <div class="highlight"><pre><span></span><span class="p">{</span>

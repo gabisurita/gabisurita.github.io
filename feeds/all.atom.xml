@@ -8,9 +8,9 @@ the holidays and one of the things that I was most involved is this package call
 &lt;a class="reference external" href="https://github.com/Cornices/cornice.ext.swagger"&gt;cornice.ext.swagger&lt;/a&gt;,
 which I'll explain soon.&lt;/p&gt;
 &lt;p&gt;As I mentioned on my blog post about &lt;a class="reference external" href="testing-swagger-spec"&gt;testing OpenAPI specification&lt;/a&gt;
-the OpenAPI/Swagger workflows usually assumes you are creating the specification before
+the OpenAPI/Swagger workflow usually assumes you are creating the specification before
 coding the API, but as I said before, there are many use cases where you already have
-a working API or just wants to start with coding ASAP where you just want to integrate
+a working API or just wants to start with coding ASAP anf just want to integrate
 the documentation later.&lt;/p&gt;
 &lt;p&gt;Writing the specification by hand and testing it with &lt;tt class="docutils literal"&gt;Bravado&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;Flex&lt;/tt&gt;, like I did on
 the last post, is somehow fast approach that doesn't involving changing the API code.
@@ -25,13 +25,14 @@ I'll let you guess what it is.&lt;/p&gt;
 suggests, it creates an OpenAPI specification directly from the API runnable code.
 But how is that possible? Well, there are a few things that are part of the documentation
 that are strictly related to the code, but as there's no free lunch, there are a few
-things that probably can't be extracted directly from the code, so you may need patch
+things that probably can't be extracted directly from the code, so you may need add or patch
 some things on the API to make it &amp;quot;self-documentable&amp;quot;.&lt;/p&gt;
-&lt;p&gt;But that's enough talking let's try some examples. One cool package for building
+&lt;p&gt;But that's enough talking lets try some examples. One cool package for building
 such APIs using Flask is called
 &lt;a class="reference external" href="https://github.com/rochacbruno/flasgger"&gt;flasgger&lt;/a&gt;. You may install it with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install flasgger
-&lt;/pre&gt;&lt;/div&gt;
+&lt;pre class="literal-block"&gt;
+$ pip install flasgger
+&lt;/pre&gt;
 &lt;p&gt;And here follows a quick example:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;jsonify&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flasgger&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Swagger&lt;/span&gt;
@@ -139,7 +140,11 @@ no effort. I'll assume some basic knowledge about Cornice, but you may be able t
 even if you are unfamiliar with it. It also provides a very nice
 &lt;a class="reference external" href="https://cornice.readthedocs.io/en/latest/quickstart.html"&gt;quickstart for peaple in a hurry&lt;/a&gt;
 that I totally recommend if this is the first time you hear that name.&lt;/p&gt;
-&lt;p&gt;Lets try a simple app:&lt;/p&gt;
+&lt;p&gt;You may install &lt;cite&gt;cornice_swagger&lt;/cite&gt; package with:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$ pip install cornice_swagger
+&lt;/pre&gt;
+&lt;p&gt;Now lets try a simple app:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;colander&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;cornice&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Service&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;cornice.service&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;get_services&lt;/span&gt;
@@ -212,7 +217,7 @@ that I totally recommend if this is the first time you hear that name.&lt;/p&gt;
     &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;make_server&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;127.0.0.1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;server&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;serve_forever&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;And of course lets take a look at the resulting documentation. JSON may be a bit harsh
+&lt;p&gt;And of course we should take a look at the resulting documentation. JSON may be a bit harsh
 to read but with time you should get used to it. The resulting documentation can be
 found at &lt;a class="reference external" href="http://localhost:8000/__api__"&gt;http://localhost:8000/__api__&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
