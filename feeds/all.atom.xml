@@ -213,7 +213,7 @@ that I totally recommend if this is the first time you hear that name.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;And of course lets take a look at the resulting documentation. JSON may be a bit harsh
 to read but with time you should get used to it. The resulting documentation can be
-found at &lt;cite&gt;http://localhost:8000/__api__&lt;/cite&gt;.&lt;/p&gt;
+found at &lt;a class="reference external" href="http://localhost:8000/__api__"&gt;http://localhost:8000/__api__&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;quot;swagger&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;2.0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;quot;info&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
