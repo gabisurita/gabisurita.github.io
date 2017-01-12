@@ -139,47 +139,47 @@ we can see that the path was automatically set and what we documented is right b
 The object schema we defined was also been broken into a reference at <cite>definitions</cite>
 section.</p>
 <div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;swagger&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;info&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;API description&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;termsOfService&quot;</span><span class="o">:</span> <span class="s2">&quot;Terms of service&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;A swagger API&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;1.0.1&quot;</span>
+    <span class="nt">&quot;swagger&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;API description&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;termsOfService&quot;</span><span class="p">:</span> <span class="s2">&quot;Terms of service&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;A swagger API&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.1&quot;</span>
     <span class="p">},</span>
-    <span class="s2">&quot;paths&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;/api/{username}&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;get&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;This resource returns user information&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;parameters&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="nt">&quot;paths&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;/api/{username}&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;get&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;This resource returns user information&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
                     <span class="p">{</span>
-                        <span class="s2">&quot;in&quot;</span><span class="o">:</span> <span class="s2">&quot;path&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-                        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+                        <span class="nt">&quot;in&quot;</span><span class="p">:</span> <span class="s2">&quot;path&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;required&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
                     <span class="p">}</span>
                 <span class="p">],</span>
-                <span class="s2">&quot;responses&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;200&quot;</span><span class="o">:</span> <span class="p">{</span>
-                        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A single user item&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;schema&quot;</span><span class="o">:</span> <span class="p">{</span>
-                            <span class="s2">&quot;$ref&quot;</span><span class="o">:</span> <span class="s2">&quot;#/definitions/user_api_get_user_response&quot;</span>
+                <span class="nt">&quot;responses&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;200&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A single user item&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;schema&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nt">&quot;$ref&quot;</span><span class="p">:</span> <span class="s2">&quot;#/definitions/user_api_get_user_response&quot;</span>
                         <span class="p">}</span>
                     <span class="p">}</span>
                 <span class="p">},</span>
-                <span class="s2">&quot;summary&quot;</span><span class="o">:</span> <span class="s2">&quot;User API&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;tags&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="nt">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;User API&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span>
                     <span class="s2">&quot;users&quot;</span>
                 <span class="p">]</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">},</span>
-    <span class="s2">&quot;definitions&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;user_api_get_user_response&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;username&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;default&quot;</span><span class="o">:</span> <span class="s2">&quot;some_username&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;The username&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+    <span class="nt">&quot;definitions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;user_api_get_user_response&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;some_username&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The username&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
