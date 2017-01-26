@@ -320,6 +320,9 @@ This way we can extract much more information from useful code than with other a
 &lt;p&gt;But you may ask, what about responses? Well, I'm working on it right now, and perhaps
 I should stop writing at this moment and tell you when I'm finished.&lt;/p&gt;
 &lt;p&gt;See you :)&lt;/p&gt;
+&lt;p&gt;Edit: In case you want to see how I actually did it, please check
+&lt;a class="reference external" href="https://cornices.github.io/cornice.ext.swagger"&gt;the documentation for the package&lt;/a&gt;
+I just wrote.&lt;/p&gt;
 &lt;/div&gt;
 </content><category term="Swagger"></category><category term="OpenAPI"></category><category term="Kinto"></category><category term="Mozilla"></category><category term="Outreachy"></category><category term="cornice"></category></entry><entry><title>Testing an OpenAPI Spec with Bravado</title><link href="gabisurita.github.io/openapi-logic-validation.html" rel="alternate"></link><published>2016-12-09T01:22:00-02:00</published><updated>2016-12-09T01:22:00-02:00</updated><author><name>Gabriela Surita</name></author><id>tag:None,2016-12-09:gabisurita.github.io/openapi-logic-validation.html</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/OAI/OpenAPI-Specification"&gt;OpenAPI&lt;/a&gt; (formally known as Swagger)
 is a standard to describe REST APIs on a computer and human readable way.

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Gabi Surita</title><link>gabisurita.github.io/</link><description></description><lastBuildDate>Tue, 10 Jan 2017 22:19:00 -0200</lastBuildDate><item><title>Building self-documented APIs</title><link>gabisurita.github.io/self-documented-apis.html</link><description>&lt;p&gt;First, I'm sorry for taking too long since the last post, but I was a bit busy during
+<rss version="2.0"><channel><title>Gabi Surita</title><link>gabisurita.github.io/</link><description></description><lastBuildDate>Wed, 25 Jan 2017 23:15:00 -0200</lastBuildDate><item><title>Go open when developing quirky</title><link>gabisurita.github.io/quirky-foss.html</link><description>&lt;p&gt;First, I've reached the middle of my internship at Mozilla. :)&lt;/p&gt;
+&lt;p&gt;And today I'm probably gonna do a much different post than the usual,
+but on the &lt;a class="reference external" href="https://gabisurita.github.io/self-documented-apis.html"&gt;last post&lt;/a&gt;,
+I've explained briefly what's
+&lt;a class="reference external" href="https://github.com/Cornices/cornice.ext.swagger/"&gt;Cornice Swagger&lt;/a&gt;,
+and how it works, but I also want to talk about how was the experience
+to …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Gabriela Surita</dc:creator><pubDate>Wed, 25 Jan 2017 23:15:00 -0200</pubDate><guid isPermaLink="false">tag:None,2017-01-25:gabisurita.github.io/quirky-foss.html</guid><category>Free Software</category><category>Outreachy</category><category>Cornice</category></item><item><title>Building self-documented APIs</title><link>gabisurita.github.io/self-documented-apis.html</link><description>&lt;p&gt;First, I'm sorry for taking too long since the last post, but I was a bit busy during
 the holidays and one of the things that I was most involved in is this package called
 &lt;a class="reference external" href="https://github.com/Cornices/cornice.ext.swagger"&gt;cornice.ext.swagger&lt;/a&gt;,
 which I'll explain soon.&lt;/p&gt;

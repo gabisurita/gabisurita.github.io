@@ -1,5 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Gabi Surita</title><link href="gabisurita.github.io/" rel="alternate"></link><link href="gabisurita.github.io/feeds/all.atom.xml" rel="self"></link><id>gabisurita.github.io/</id><updated>2017-01-10T22:19:00-02:00</updated><entry><title>Building self-documented APIs</title><link href="gabisurita.github.io/self-documented-apis.html" rel="alternate"></link><published>2017-01-10T22:19:00-02:00</published><updated>2017-01-10T22:19:00-02:00</updated><author><name>Gabriela Surita</name></author><id>tag:None,2017-01-10:gabisurita.github.io/self-documented-apis.html</id><summary type="html">&lt;p&gt;First, I'm sorry for taking too long since the last post, but I was a bit busy during
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Gabi Surita</title><link href="gabisurita.github.io/" rel="alternate"></link><link href="gabisurita.github.io/feeds/all.atom.xml" rel="self"></link><id>gabisurita.github.io/</id><updated>2017-01-25T23:15:00-02:00</updated><entry><title>Go open when developing quirky</title><link href="gabisurita.github.io/quirky-foss.html" rel="alternate"></link><published>2017-01-25T23:15:00-02:00</published><updated>2017-01-25T23:15:00-02:00</updated><author><name>Gabriela Surita</name></author><id>tag:None,2017-01-25:gabisurita.github.io/quirky-foss.html</id><summary type="html">&lt;p&gt;First, I've reached the middle of my internship at Mozilla. :)&lt;/p&gt;
+&lt;p&gt;And today I'm probably gonna do a much different post than the usual,
+but on the &lt;a class="reference external" href="https://gabisurita.github.io/self-documented-apis.html"&gt;last post&lt;/a&gt;,
+I've explained briefly what's
+&lt;a class="reference external" href="https://github.com/Cornices/cornice.ext.swagger/"&gt;Cornice Swagger&lt;/a&gt;,
+and how it works, but I also want to talk about how was the experience
+to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;First, I've reached the middle of my internship at Mozilla. :)&lt;/p&gt;
+&lt;p&gt;And today I'm probably gonna do a much different post than the usual,
+but on the &lt;a class="reference external" href="https://gabisurita.github.io/self-documented-apis.html"&gt;last post&lt;/a&gt;,
+I've explained briefly what's
+&lt;a class="reference external" href="https://github.com/Cornices/cornice.ext.swagger/"&gt;Cornice Swagger&lt;/a&gt;,
+and how it works, but I also want to talk about how was the experience
+to get involved and contribute to Cornice Swagger.&lt;/p&gt;
+&lt;p&gt;If you read my last post, there's a good chance you thought that the
+use case Cornice Swagger applies is very unusual, and why put effort in
+developing and maintaining a package like it when the use case is so specific?
+Why don't hack a much simpler solution that works for each your use case and
+dedicate time improving your own software?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Side note:&lt;/strong&gt; I agree that the use case is specific, but it shouldn't be.
+People really should begin documenting HTTP APIs in a more intelligent and
+automated way. Getting back to the post...&lt;/p&gt;
+&lt;p&gt;Well, I've considered that. When I've begin to contribute with the package,
+it didn't suited many aspects of the solution I needed, and I would probably
+have to rewrite a good part of the code. I discussed the changes with
+my mentor and the part of the team and we were afraid that the maintainers
+wouldn't be receptive to the changes we needed. But we decided to try.&lt;/p&gt;
+&lt;p&gt;I've started with a large PR changing a lot the package structure, and it was
+awesome! The maintainers agreed that the package need those changes and they
+were willing to change their applications to use the modified API. And
+that made everyone's life better.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Another side note:&lt;/strong&gt; If we want to make it popular, it's also important to make
+it modular and pluggable, and that's another relevant part of doing stuff on
+a separate package.&lt;/p&gt;
+&lt;p&gt;I realized that's how free and open software should work. The whole idea
+is that there should be cooperation to make everyone's software better.
+We have to be willing to contribute to someone else's software, as well as
+accept other people changes when they make sense. I could use it for my use
+case, and we all lived happily ever after...&lt;/p&gt;
+&lt;p&gt;And, well, not really. There's still
+&lt;a class="reference external" href="https://github.com/Cornices/cornice.ext.swagger/issues"&gt;a lot of open issues&lt;/a&gt;
+to solve, but there's also good news. There are more people willing to use,
+contribute and making breaking changes to the package like I did, and that's
+my turn to be receptive and make our (and other people) software more mature.&lt;/p&gt;
+&lt;p&gt;But let's go back to work... together!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Footnote:&lt;/strong&gt; I definitely should write some CSS to make side notes be side notes.&lt;/p&gt;
+</content><category term="Free Software"></category><category term="Outreachy"></category><category term="Cornice"></category></entry><entry><title>Building self-documented APIs</title><link href="gabisurita.github.io/self-documented-apis.html" rel="alternate"></link><published>2017-01-10T22:19:00-02:00</published><updated>2017-01-10T22:19:00-02:00</updated><author><name>Gabriela Surita</name></author><id>tag:None,2017-01-10:gabisurita.github.io/self-documented-apis.html</id><summary type="html">&lt;p&gt;First, I'm sorry for taking too long since the last post, but I was a bit busy during
 the holidays and one of the things that I was most involved in is this package called
 &lt;a class="reference external" href="https://github.com/Cornices/cornice.ext.swagger"&gt;cornice.ext.swagger&lt;/a&gt;,
 which I'll explain soon.&lt;/p&gt;
@@ -320,6 +365,9 @@ This way we can extract much more information from useful code than with other a
 &lt;p&gt;But you may ask, what about responses? Well, I'm working on it right now, and perhaps
 I should stop writing at this moment and tell you when I'm finished.&lt;/p&gt;
 &lt;p&gt;See you :)&lt;/p&gt;
+&lt;p&gt;Edit: In case you want to see how I actually did it, please check
+&lt;a class="reference external" href="https://cornices.github.io/cornice.ext.swagger"&gt;the documentation for the package&lt;/a&gt;
+I just wrote.&lt;/p&gt;
 &lt;/div&gt;
 </content><category term="Swagger"></category><category term="OpenAPI"></category><category term="Kinto"></category><category term="Mozilla"></category><category term="Outreachy"></category><category term="cornice"></category></entry><entry><title>Creating clients for Kinto using Swagger Codegen</title><link href="gabisurita.github.io/kinto-client-generation.html" rel="alternate"></link><published>2016-12-19T09:22:00-02:00</published><updated>2016-12-19T09:22:00-02:00</updated><author><name>Gabriela Surita</name></author><id>tag:None,2016-12-19:gabisurita.github.io/kinto-client-generation.html</id><summary type="html">&lt;p&gt;While working with
 &lt;a class="reference external" href="https://github.com/Kinto/kinto/pull/977"&gt;Adding Support to OpenAPI to Kinto&lt;/a&gt;,
