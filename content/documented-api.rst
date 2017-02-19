@@ -353,3 +353,7 @@ But you may ask, what about responses? Well, I'm working on it right now, and pe
 I should stop writing at this moment and tell you when I'm finished.
 
 See you :)
+
+Edit: In case you want to see how I actually did it, please check
+`the documentation for the package <https://cornices.github.io/cornice.ext.swagger>`_
+I just wrote.
