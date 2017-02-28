@@ -20,7 +20,7 @@ a working API or just wants to start with coding ASAP and just want to add
 the documentation later.
 
 Writing the specification by hand and testing it with ``Bravado`` or ``Flex``, like I did on
-the last post, is somewhat fast approach that doesn't involving changing the API code.
+the last post, is somewhat fast approach that doesn't involve changing the API code.
 This makes it useful for several cases, but when working with some huge APIs, it
 can be tedious and lead to vagueness in the documentation, as it becomes
 complicated for one or a small group of people to know all the aspects of the API.
@@ -159,7 +159,7 @@ is an OpenAPI documentation generator for
 Cornice is an extension for Pyramid that allows creating REST web services with almost
 no effort. I'll assume some basic knowledge about Cornice, but you may be able to understand
 even if you are unfamiliar with it. It also provides a very nice
-`quickstart for peaple in a hurry <https://cornice.readthedocs.io/en/latest/quickstart.html>`_
+`quickstart for people in a hurry <https://cornice.readthedocs.io/en/latest/quickstart.html>`_
 that I totally recommend if this is the first time you hear that name.
 
 You may install `cornice_swagger` package with::
