@@ -58,7 +58,7 @@ coding the API there are many use cases where you already have
 a working API or just wants to start with coding ASAP and just want to add
 the documentation later.&lt;/p&gt;
 &lt;p&gt;Writing the specification by hand and testing it with &lt;tt class="docutils literal"&gt;Bravado&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;Flex&lt;/tt&gt;, like I did on
-the last post, is somewhat fast approach that doesn't involving changing the API code.
+the last post, is somewhat fast approach that doesn't involve changing the API code.
 This makes it useful for several cases, but when working with some huge APIs, it
 can be tedious and lead to vagueness in the documentation, as it becomes
 complicated for one or a small group of people to know all the aspects of the API.&lt;/p&gt;
@@ -183,7 +183,7 @@ is an OpenAPI documentation generator for
 Cornice is an extension for Pyramid that allows creating REST web services with almost
 no effort. I'll assume some basic knowledge about Cornice, but you may be able to understand
 even if you are unfamiliar with it. It also provides a very nice
-&lt;a class="reference external" href="https://cornice.readthedocs.io/en/latest/quickstart.html"&gt;quickstart for peaple in a hurry&lt;/a&gt;
+&lt;a class="reference external" href="https://cornice.readthedocs.io/en/latest/quickstart.html"&gt;quickstart for people in a hurry&lt;/a&gt;
 that I totally recommend if this is the first time you hear that name.&lt;/p&gt;
 &lt;p&gt;You may install &lt;cite&gt;cornice_swagger&lt;/cite&gt; package with:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
