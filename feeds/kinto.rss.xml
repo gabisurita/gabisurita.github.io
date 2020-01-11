@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Gabi Surita - Kinto</title><link>gabisurita.github.io/</link><description></description><lastBuildDate>Mon, 19 Dec 2016 09:22:00 -0200</lastBuildDate><item><title>Creating clients for Kinto using Swagger Codegen</title><link>gabisurita.github.io/kinto-client-generation.html</link><description>&lt;p&gt;While working with
-&lt;a class="reference external" href="https://github.com/Kinto/kinto/pull/977"&gt;Adding Support to OpenAPI to Kinto&lt;/a&gt;,
-one of the features that most called my attention was the support
-for automated client generation. This may save a lot of time and effort
-for developers which may want to code on client languages that are currently not
-supported by …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Gabriela Surita</dc:creator><pubDate>Mon, 19 Dec 2016 09:22:00 -0200</pubDate><guid isPermaLink="false">tag:None,2016-12-19:gabisurita.github.io/kinto-client-generation.html</guid><category>Swagger</category><category>OpenAPI</category><category>Kinto</category><category>Mozilla</category><category>Outreachy</category><category>Client Generation</category></item></channel></rss>
